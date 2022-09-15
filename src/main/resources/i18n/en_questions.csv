@@ -1,4 +1,4 @@
-Вопрос,Вариант 1,Вариант 2,Вариант 3,Вариант 4,Ответ
+Question,Answer 1,Answer 2,Answer 3,Answer 4,Answer
 How declare a class?,a)class MyClass {},b)new class MyClass {},c)select * from class MyClass {},d)MyClass extends class {},a
 class MyClass ... MyInterface,a)extends,b)implements,c)extend,d):,b
 What is the maximum number recommended for the method?,a)5,b)2,c)4,d)3,c

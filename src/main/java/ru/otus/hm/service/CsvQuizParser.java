@@ -16,10 +16,10 @@ import java.util.List;
 
 public class CsvQuizParser implements QuizParser {
 
-    private static final String QUESTION_HEADER = "Вопрос";
-    private static final String CORRECT_ANSWER_HEADER = "Ответ";
+    private static final String QUESTION_HEADER = "Question";
+    private static final String CORRECT_ANSWER_HEADER = "Answer";
 
-    private static final String[] ANSWER_HEADERS = new String[] {"Вариант 1", "Вариант 2", "Вариант 3", "Вариант 4"};
+    private static final String[] ANSWER_HEADERS = new String[] {"Answer 1", "Answer 2", "Answer 3", "Answer 4"};
 
     @Override
     public Quiz readQuiz(InputStream inputStream) {

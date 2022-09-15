@@ -1,22 +1,26 @@
 package ru.otus.hm.service;
 
 
-import ru.otus.hm.config.QuizProps;
+import org.springframework.context.MessageSource;
+import ru.otus.hm.config.AppProps;
 
 import java.io.InputStream;
 
 public class FileLoader {
 
-    private final QuizProps config;
+    private final AppProps props;
+    private final MessageSource messageSource;
 
-    public FileLoader(QuizProps config) {
-        this.config = config;
+    public FileLoader(AppProps props, MessageSource messageSource) {
+        this.props = props;
+        this.messageSource = messageSource;
     }
 
     public InputStream loadFileFromResource() {
-        var is = FileLoader.class.getResourceAsStream(config.getFile());
+        var localizedFile = messageSource.getMessage("quiz.file", null, props.getLocale());
+        var is = FileLoader.class.getResourceAsStream(localizedFile);
         if (is == null) {
-            throw new RuntimeException("File " + config.getFile() + "not found in resource");
+            throw new RuntimeException("File " + localizedFile + "not found in resource");
         }
         return is;
     }

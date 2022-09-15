@@ -68,7 +68,7 @@ public class ResourceQuizService implements QuizService {
                 System.out.println(q.getAnswers());
             }
             var answer = in.nextLine();
-            if (Objects.equals(answer, q.getCorrectAnswer())) {
+            if (Objects.equals(answer.toLowerCase(), q.getCorrectAnswer())) {
                 score++;
             }
         }
