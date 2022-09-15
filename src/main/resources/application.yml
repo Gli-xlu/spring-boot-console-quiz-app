@@ -1,0 +1,10 @@
+quiz:
+  file: /ru_RU_questions.csv
+
+spring:
+  messages:
+    basename: "i18n/appmessages"
+    encoding: "UTF-8"
+
+application:
+  locale: ru_RU

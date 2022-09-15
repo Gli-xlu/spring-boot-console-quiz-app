@@ -1,0 +1,6 @@
+Вопрос,Вариант 1,Вариант 2,Вариант 3,Вариант 4,Ответ
+Как объявить класс в коде?,а)class MyClass {},б)new class MyClass {},в)select * from class MyClass {},г)MyClass extends class {},а
+class MyClass ... MyInterface,а)extends,б)implements,в)extend,г):,б
+Какое максимальное число рекомендуется принимать методу?,а)5,б)2,в)4,г)3,в
+select * from test ... count > 5?,,,,,where
+update test ... amount = 100?,,,,,set
