@@ -23,37 +23,15 @@ public class ResourceQuizService implements QuizService {
     }
 
     @Override
-    public String printQuiz() {
-        if (quiz == null) {
-            return getMessage("quiz.empty");
-        }
-        var builder = new StringBuilder();
-        quiz.questions().forEach(q -> {
-            builder.append(q.getQuestion());
-            builder.append("\n");
-            if (q.hasAnswers()) {
-                builder.append(q.getAnswers());
-                builder.append("\n");
-            }
-            builder.append("\n");
-        });
-        return builder.toString();
-    }
-
-    @Override
     public String testStudent(Student student) {
         var in = new Scanner(System.in);
 
         var score = test(in);
-        return getMessage("quiz.score", new String[] {student.surname(), student.name(), String.valueOf(score)});
+        return getTestResultMessage(new String[] {student.surname(), student.name(), String.valueOf(score)});
     }
 
-    private String getMessage(String code) {
-        return getMessage(code, null);
-    }
-
-    private String getMessage(String code, Object[] args) {
-        return messageSource.getMessage(code, args, props.getLocale());
+    private String getTestResultMessage(Object[] args) {
+        return messageSource.getMessage("quiz.score", args, props.getLocale());
     }
 
     private int test(Scanner in) {

@@ -42,12 +42,6 @@ public class ApplicationEventsCommands {
         return quizService.testStudent(student);
     }
 
-    @ShellMethod(value = "Print test command", key = {"p", "print"})
-    @ShellMethodAvailability(value = "isTestCommandAvailable")
-    public String printTest() {
-        return quizService.printQuiz();
-    }
-
     private Availability isTestCommandAvailable() {
         return student == null ? Availability.unavailable("Сначала залогиньтесь") : Availability.available();
     }
