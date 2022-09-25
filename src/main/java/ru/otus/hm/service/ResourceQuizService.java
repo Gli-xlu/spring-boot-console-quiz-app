@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.otus.hm.config.AppProps;
 import ru.otus.hm.dao.Question;
 import ru.otus.hm.dao.Quiz;
+import ru.otus.hm.dao.Student;
 
 import java.util.Objects;
 import java.util.Scanner;
@@ -22,41 +23,37 @@ public class ResourceQuizService implements QuizService {
     }
 
     @Override
-    public void printQuiz() {
+    public String printQuiz() {
         if (quiz == null) {
-            printMessage("quiz.empty");
-            return;
+            return getMessage("quiz.empty");
         }
+        var builder = new StringBuilder();
         quiz.questions().forEach(q -> {
-            System.out.println(q.getQuestion());
+            builder.append(q.getQuestion());
+            builder.append("\n");
             if (q.hasAnswers()) {
-                System.out.println(q.getAnswers());
+                builder.append(q.getAnswers());
+                builder.append("\n");
             }
-            System.out.println();
+            builder.append("\n");
         });
+        return builder.toString();
     }
 
     @Override
-    public void testStudent() {
+    public String testStudent(Student student) {
         var in = new Scanner(System.in);
 
-        printMessage("quiz.name");
-        var firstName = in.nextLine();
-        printMessage("quiz.surname");
-        var lastName = in.nextLine();
-
         var score = test(in);
-        System.out.println();
-        printMessage("quiz.score", new String[] {lastName, firstName, String.valueOf(score)});
+        return getMessage("quiz.score", new String[] {student.surname(), student.name(), String.valueOf(score)});
     }
 
-    private void printMessage(String code) {
-        printMessage(code, null);
+    private String getMessage(String code) {
+        return getMessage(code, null);
     }
 
-    private void printMessage(String code, Object[] args) {
-        var localizedQuestion = messageSource.getMessage(code, args, props.getLocale());
-        System.out.println(localizedQuestion);
+    private String getMessage(String code, Object[] args) {
+        return messageSource.getMessage(code, args, props.getLocale());
     }
 
     private int test(Scanner in) {

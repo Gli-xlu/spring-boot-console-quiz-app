@@ -1,8 +1,10 @@
 package ru.otus.hm.service;
 
+import ru.otus.hm.dao.Student;
+
 public interface QuizService {
 
-    void printQuiz();
+    String printQuiz();
 
-    void testStudent();
+    String testStudent(Student student);
 }
